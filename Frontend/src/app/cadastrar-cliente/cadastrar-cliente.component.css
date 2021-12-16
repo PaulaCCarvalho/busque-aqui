@@ -1,0 +1,118 @@
+.conteiner{
+    margin-top: 4%;
+    display: grid;
+}
+
+#title{
+    display: flex;
+    justify-content: center ;
+    flex-direction: row;
+    height: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4%;
+    text-align: center;
+    font-size: xx-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.form-gruop{
+    align-items: center;
+    width: 50%;
+    margin-left: auto;
+    margin-top: 1%;
+    margin-right: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: medium;
+}
+
+#radio{
+    margin-left: 4%; 
+    margin-right: 9%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+}
+
+.center{
+    font-size: 1.3rem;
+    font-weight: bolder;
+    line-height: 1.2;
+    width: 21%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+
+}
+
+.botao{
+    text-align: center;
+    width: 50%;
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.btn-primary{
+    float: center;
+    align-items: center;
+    background-color: gray;
+    border-color: black ;
+    font-size: large;
+}
+
+.btn-primary:hover{
+    background-color:rgb(241, 243, 243);
+    border-color: black;
+    color: black;
+}
+
+.left{
+    margin-left: 25%;
+    float: left;
+    width: 25%;
+}
+
+.right{
+    float: right;
+    width: 50%;    
+}
+
+#senha{
+    width: 90%;
+}
+
+#confirmar_senha{
+    width: 50%;   
+}
+
+#adicionar-imagens{
+    margin-top: 3%;
+}
+
+#radio{
+    display: flex;
+    font-size: 1.3vw;
+    justify-content: center;
+
+}
+
+.form-check{
+    margin-left: 2%;
+}
+
+#link{
+    text-decoration: none;
+    color: black;
+}
+
+body{
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    height: 65%;
+    margin-top: 8%;
+    margin-bottom: auto;
+    vertical-align: middle;
+
+}

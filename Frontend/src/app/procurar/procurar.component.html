@@ -1,0 +1,58 @@
+<body>
+<div class="pesquisa">
+    <mat-card >
+        <form>
+            <mat-form-field id="campo">
+                <input matInput placeholder="Profissão" [(ngModel)]="profissional.profissao" name="profissao"> 
+            </mat-form-field>
+            <mat-form-field id="campo">
+                <input matInput placeholder="Categoria" [(ngModel)]="profissional.categoria" name="categoria">
+            </mat-form-field>
+            <mat-form-field id="campo">
+                <input matInput placeholder="Cidade" [(ngModel)]="profissional.cidade" name="cidade"> 
+            </mat-form-field>
+            <mat-form-field id="campo">
+                <input matInput placeholder="Estado" [(ngModel)]="profissional.estado" name="estado"> 
+            </mat-form-field>
+        </form>
+        <button id="button_search" mat-raised-button color="warn" (click)="buscar()"> Pesquisar </button>
+    </mat-card>
+</div>
+
+{{profissional.profissao}}
+{{profissional.categoria}}
+{{profissional.cidade}}
+{{profissional.estado}}
+
+<div class="conteiner"> 
+    <div *ngFor="let profissional of dataSource">
+        <div class="card" style="width: 15rem;">
+            <div class="card-body">
+                <h5 id="title">{{profissional.nome}}</h5>
+                <p id="classificacao"> <i id="icon" class="material-icons v-middle" >star</i> {{profissional.classificacao}}</p>
+                <p class="bloco"> <b>Profissão: </b>{{profissional.profissao}}</p>
+                <p class="bloco"><b>Localização: </b>{{profissional.cidade}} &nbsp; - &nbsp; {{profissional.estado}}</p>
+                <a id="button" mat-raised-button color="warn" (click)="passarId(profissional)" [routerLink]="'/perfil'">Analizar Perfil</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
+
+<!--<img id="img" src="assets/img/woman.png" class="card-img-top" alt="...">-->
+
+<!-- <table mat-table [dataSource]="dataSource" >
+    <div  class="card" style="width: 15rem;">
+        <img id="img" src="assets/img/woman.png" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title" *matCellDef="let profissional">{{profissional.nome}}</h5>
+        <p class="card-text" *matCellDef="let profissional">{{profissional.profissao}}</p>
+        <p class="card-text" *matCellDef="let profissional">{{profissional.cidade}} - {{profissional.estado}}</p>
+        <p class="card-text" *matCellDef="let profissional">{{profissional.categoria}}</p>
+        <p class="card-text" *matCellDef="let profissional">{{profissional.classificacao}}</p>
+        <a href="#" class="btn btn-primary">Ver mais...</a>
+        </div>
+    </div>
+</table> -->
+</body>

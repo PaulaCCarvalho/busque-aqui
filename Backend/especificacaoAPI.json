@@ -1,0 +1,563 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "APP_BusqueAqui - Sistema desenvolvido ao longo da disciplina de Tecnologia Web - UFSJ",
+    "version": "1.0.0",
+    "title": "BusqueAqui",
+    "contact": {
+      "email": "paulacriscarvalhovilela@aluno.ufsj.edu.br"
+    }
+  },
+  "host": "busqueaqui.ccomp.ufsj.edu.br",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "user",
+      "description": "Cadastre-se e entre em contato com os melhores profissioanis próximo a você."
+    },
+    {
+      "name": "classificacao",
+      "description": "Encontre os melhores profissionais recomendados em sua região"
+    },
+    {
+      "name": "profissional",
+      "description": "Oferte seus serviço e alcance ainda mais clientes."
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/user": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Adiciona um novo usuário",
+        "operationId": "addUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Usuário a ser cadastrado no sistema",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/user/{Iduser}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Busca usuário pelo ID",
+        "operationId": "getUserById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Iduser",
+            "in": "path",
+            "description": "Retorna os dados do usuário cujo o ID foi fornecido",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "O ID fornecido é inválido"
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Atualizar as informações do usuário",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Iduser",
+            "in": "path",
+            "description": "ID que será atualizado",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Usuário que precisa ser atualizado",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "O Id fornecido é inválido"
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Apaga um usuário",
+        "operationId": "deleteUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Iduser",
+            "in": "path",
+            "description": "Usuário cujo ID foi fornecido será removido do sistema",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "O Id fornecido é inválido"
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          }
+        }
+      }
+    },
+    "/classificacao": {
+      "post": {
+        "tags": [
+          "classificacao"
+        ],
+        "summary": "Adiciona um feedback do profissioal",
+        "operationId": "addFeed",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Feedback a ser criado no sistema",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Classificacao"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Classificacao"
+            }
+          }
+        }
+      }
+    },
+    "/classificacao/{IdProfissional}": {
+      "get": {
+        "tags": [
+          "classificacao"
+        ],
+        "summary": "Busca todos os feedbacks de um determinado profissional",
+        "operationId": "getFeedById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "IdProfissional",
+            "in": "path",
+            "description": "Utiliza o ID do profissional",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/Classificacao"
+            }
+          },
+          "400": {
+            "description": "O ID fornecido é inválido"
+          },
+          "404": {
+            "description": "Feedback não encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "classificacao"
+        ],
+        "summary": "Atualizar as informações do feedback",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "IdProfissional",
+            "in": "path",
+            "description": "ID que precisa ser atualizado",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Feedback a ser atualizado",
+            "schema": {
+              "$ref": "#/definitions/Classificacao"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/Classificacao"
+            }
+          },
+          "400": {
+            "description": "O Id fornecido é inválido"
+          },
+          "404": {
+            "description": "Feedback não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "classificacao"
+        ],
+        "summary": "Apaga um feedback",
+        "operationId": "deleteFeed",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "IdProfissional",
+            "in": "path",
+            "description": "Feedback cujo IDfoi fornecido será removido do sistema",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/Classificacao"
+            }
+          },
+          "400": {
+            "description": "O Id fornecido é inválido"
+          },
+          "404": {
+            "description": "Feedback não encontrado"
+          }
+        }
+      }
+    },
+    "/profissional": {
+      "post": {
+        "tags": [
+          "profissional"
+        ],
+        "summary": "Adiciona um perfil profissional",
+        "operationId": "addPerfil",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Perfil profissional a ser criado no sistema",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Profissional"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Profissional"
+            }
+          }
+        }
+      }
+    },
+    "/profissional/{profissionalId}": {
+      "get": {
+        "tags": [
+          "profissional"
+        ],
+        "summary": "Busca o perfil de um determinado profissional",
+        "operationId": "getPerfilById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "profissionalId",
+            "in": "path",
+            "description": "Utiliza o ID do profissional",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/Profissional"
+            }
+          },
+          "400": {
+            "description": "O ID fornecido é inválido"
+          },
+          "404": {
+            "description": "Perfil não encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "profissional"
+        ],
+        "summary": "Atualizar as informações do perfil de um profissional",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "profissionalId",
+            "in": "path",
+            "description": "ID que precisa ser atualizado",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Perfil a ser atualizado",
+            "schema": {
+              "$ref": "#/definitions/Profissional"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/Profissional"
+            }
+          },
+          "400": {
+            "description": "O Id fornecido é inválido"
+          },
+          "404": {
+            "description": "Perfil do profissional não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "profissional"
+        ],
+        "summary": "Apaga um perfil de um profissional",
+        "operationId": "deletePerfil",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "profissionalId",
+            "in": "path",
+            "description": "ID do profissional cujo o perfil será apagado",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/Profissional"
+            }
+          },
+          "400": {
+            "description": "O Id fornecido é inválido"
+          },
+          "404": {
+            "description": "Perfil do profissional não encontrado"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "iduser": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "email": {
+          "type": "string"
+        },
+        "senha": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        }
+      }
+    },
+    "Classificacao": {
+      "type": "object",
+      "properties": {
+        "idfeed": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "email": {
+          "type": "string"
+        },
+        "comentario": {
+          "type": "string"
+        },
+        "profissional": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "Profissional": {
+      "type": "object",
+      "properties": {
+        "iduser": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "email": {
+          "type": "string"
+        },
+        "senha": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "profissao": {
+          "type": "string"
+        },
+        "categoria": {
+          "type": "string"
+        },
+        "endereco": {
+          "type": "string"
+        },
+        "bairro": {
+          "type": "string"
+        },
+        "num_endereco": {
+          "type": "integer"
+        },
+        "cidade": {
+          "type": "string"
+        },
+        "cep": {
+          "type": "string"
+        },
+        "estado": {
+          "type": "string"
+        },
+        "descricao": {
+          "type": "string"
+        },
+        "telefone": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

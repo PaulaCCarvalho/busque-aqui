@@ -1,0 +1,86 @@
+.conteiner{
+    display: grid;
+    margin: 4% 8% 10% 8%;
+
+}
+
+#title{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 30px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    text-align: center;
+    font-size: 3.5vmax;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    vertical-align: middle;
+
+}
+
+#icon{
+    font-size: 3vmax;
+    color: gold;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+}
+
+#classificacao{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 35px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8%;
+    text-align: center;
+    font-size: 3.2vmax;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    vertical-align: middle;
+    align-items: center;
+
+}
+
+#Feedback{
+    display: flex;
+    height: 30px;
+    text-align: center;
+    font-size: xx-large;
+    margin-top: 10%;
+}
+
+.bloco1{
+    font-size: large;
+}
+
+.feed{
+    margin-bottom: 20%;
+}
+
+.card-body{
+    margin-top: -2%;
+    margin-bottom: -3%;
+}
+
+.bloco2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: large;
+    margin-bottom: -2%;
+    line-height: 1.2rem;
+    vertical-align: middle;
+    align-items: center;
+}
+
+#star{
+    color: gold;
+    font-size: large;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+}

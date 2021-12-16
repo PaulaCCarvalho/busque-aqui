@@ -1,0 +1,33 @@
+.header{
+    display: flex;
+    justify-content: center;
+}
+
+.header a{
+    display: flex;
+    margin-left: 15px;
+    color:dimgrey;
+    text-decoration: none;
+    font-family:fantasy;
+    font-size: 125%;
+    
+}
+
+.logo{
+    max-height: 34px;
+}
+
+.menu  {
+    display: flex;
+    margin-left: 50%; 
+    float: right;
+}
+
+.menu a{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: black;
+    
+}

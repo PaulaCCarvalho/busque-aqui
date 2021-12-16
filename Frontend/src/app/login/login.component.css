@@ -1,0 +1,69 @@
+.conteiner{
+    display: grid;
+    grid-template-rows: 10vh 10vh 10vh  2.5vhs;
+    width: 35%;
+    height: 50%;
+    margin: 9%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightgray;
+    border-radius: 15px;
+    padding: 3%;
+}
+
+#title{
+    display: flexbox;
+    justify-content: center ;
+    height: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6%;
+    text-align: center;
+    font-size: xx-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.form-gruop{
+    display: inline-block;
+    align-items: flex-start;
+    height: 30px;
+    margin: 4%;
+}
+
+#nome{
+    width: 175%;
+}
+
+#email{
+    width: 175%;
+}
+
+.conteiner a{
+    margin-left: 4%;
+    margin-top: 3%;
+    color: blue;
+
+    
+}
+
+.botao{
+    text-align: center;
+    width: 50%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-primary{
+    float: center;
+    align-items: center;
+    background-color: gray;
+    border-color: black ;
+}
+
+.btn-primary:hover{
+    background-color:rgb(241, 243, 243);
+    border-color: black;
+    color: black;
+}

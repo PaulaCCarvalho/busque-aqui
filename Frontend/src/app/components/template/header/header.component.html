@@ -1,0 +1,18 @@
+<mat-toolbar class="header mat-elevation-z4" >
+    <mat-toolbar-row>
+        <span>
+            <a href="http://localhost:4200">
+                <img class="logo" src="assets/img/logo.png" alt="Logo">
+                Busque Aqui
+            </a>
+        </span>
+
+        <div class="menu">
+            <a mat-button [routerLink]="'/procurar'">Profissionais</a>
+            <a mat-button [routerLink]="'/cadastrar/cliente'">Cadastrar</a>
+            <a mat-button [routerLink]="'/login'">Login</a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
