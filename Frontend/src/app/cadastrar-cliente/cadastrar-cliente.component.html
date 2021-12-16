@@ -3,8 +3,8 @@
 <div class="conteiner">
     <div id="title">CADASTRO</div>
     
-    <form  [formGroup]="formulario" (ngSubmit)="onSubmit()">
-        <div id="radio" >
+    <form >
+        <div id="radio">
             <div class="form-check">
                 <input class="form-check-input v-middle " type="radio" name="flexRadioDefault" id="flexRadioDefault1 " checked>
                 <label class="form-check-label v-middle " for="flexRadioDefault1">
@@ -23,19 +23,19 @@
 
         <div class="form-gruop">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome">
+        <input type="text" class="form-control" id="nome" placeholder="Nome">
         </div>
         <div class="form-gruop">
             <label for="email">E-mail</label>
-            <input type="text" class="form-control" id="email" placeholder="E-mail" formControlName="email">
+            <input type="text" class="form-control" id="email" placeholder="E-mail">
         </div>
         <div class="form-gruop left">
             <label for="senha">Senha</label>
-            <input type="text" class="form-control" id="senha" placeholder="Senha" formControlName="senha">
+            <input type="text" class="form-control" id="senha" placeholder="Senha">
         </div>
         <div class="form-gruop right">
             <label for="confirmar_senha">Confirmar Senha</label>
-            <input type="text" class="form-control" id="confirmar_senha" placeholder="Confirmar Senha" formControlName="confirm_senha">
+            <input type="text" class="form-control" id="confirmar_senha" placeholder="Confirmar Senha">
         </div>
         <!-- Adicionar Imagem  <div class="form-gruop" id="adicionar-imagens" >
             <label for="adicionar imagem" style="margin-top: 2%;">Adicione Imagens</label>
