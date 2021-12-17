@@ -1,12 +1,13 @@
 var express = require('express');
 var cors = require('cors');
 var app = express();
+var jwt = require('jsonwebtoken');
 
 var mysql = require("mysql");
 var connection = mysql.createConnection({
     host: "localhost",
-    user: "DiegoDias",
-    password: "Ddp260700",
+    user: "Paula",
+    password: "password",
     database: "tecweb"
 });
 
@@ -29,7 +30,48 @@ app.use(express.json());
 // 404 → Recurso não encontrado(Not Found)
 // 500 → Erro interno no servidor
 
-app.post("/profissional", (req, resp) =>{
+
+app.post('/login', (req, resp) =>{
+    var user = req.body;
+
+    connection.query("SELECT * FROM cadastro WHERE email = ? AND senha = ?", [user.email, user.senha], (err, result) => {
+        
+        var usuario = result[0];
+
+        if(result.length == 0){
+            resp.status(401);
+            resp.send({token: null, usuario: usuario, sucess: false});
+        }else{
+            console.log('!!!!valido!!!!')
+
+            let token = jwt.sign({id: usuario.email}, 'busqueAqui', {expiresIn: 6000});
+            resp.status(200);
+            console.log(usuario.email, usuario);
+            resp.send({token: token, usuario: usuario, success: true});
+            
+        }
+    })
+})
+
+verifica_token = (req, resp, next) =>{
+    var token = req.headers['x-access-token'];
+    console.log(req.headers);
+    if(!token){
+        console.log("Token nulo")
+        return resp.status(401).end();
+    }
+
+    jwt.verify(token, 'busqueAqui', (err, decoded) => {
+        if(err){
+            return resp.status(401).end();
+        }
+
+        req.usuario = decoded.id;
+        next();
+    });
+}
+
+app.post("/profissional",  (req, resp) =>{
     const {email,senha,nome,profissao,categoria,endereco,bairro,num_endereco,cidade,cep,estado,descricao,telefone} = req.body;
     console.log(email,senha,nome,profissao,categoria,endereco,bairro,num_endereco,cidade,cep,estado,descricao,telefone);
 
@@ -55,7 +97,7 @@ app.post("/profissional", (req, resp) =>{
     });
 });
 
-app.get("/profissional/:profissionalId", (req, resp) => {
+app.get("/profissional/:profissionalId", verifica_token, (req, resp) => {
     var profissionalId = req.params.profissionalId;
     console.log("GET - ProfissionalId: " + profissionalId);
 
@@ -71,7 +113,7 @@ app.get("/profissional/:profissionalId", (req, resp) => {
     });
 });
 
-app.put("/profissional/:profissionalId", (req, resp) => {
+app.put("/profissional/:profissionalId", verifica_token, (req, resp) => {
     var profissionalId = req.params.profissionalId;
     const {email,senha,nome,profissao,categoria,endereco,bairro,num_endereco,cidade,cep,estado,descricao,telefone} = req.body;
     console.log("PUT - ProfissionalId: " + profissionalId);
@@ -97,7 +139,7 @@ app.put("/profissional/:profissionalId", (req, resp) => {
 
 });
 
-app.delete("/profissional/:profissionalId", (req, resp) => {
+app.delete("/profissional/:profissionalId", verifica_token, (req, resp) => {
     var profissionalId = req.params.profissionalId;
     console.log("DELETE - ProfissionalId: " + profissionalId);
 
@@ -130,10 +172,10 @@ app.delete("/profissional/:profissionalId", (req, resp) => {
     });
 });
 
-app.get("/profissional", (req, resp) => {
+app.get("/profissional", verifica_token, (req, resp) => {
     console.log("GET -  Profissional: " );
 
-    connection.query("SELECT iduser,nome, profissao, cidade, estado, categoria,(SELECT avg(classificacao) from feedback where iduser = profissional ) AS 'classificacao' FROM cadastro JOIN perfil ON cadastro.perfil = idperfil WHERE perfil IS NOT NULL ", (err, result) => {
+    connection.query("SELECT iduser,nome, profissao, cidade, estado, telefone, categoria,(SELECT avg(classificacao) from feedback where iduser = profissional ) AS 'classificacao' FROM cadastro JOIN perfil ON cadastro.perfil = idperfil WHERE perfil IS NOT NULL ", (err, result) => {
 
         if(err){
             console.log(err);
@@ -145,7 +187,7 @@ app.get("/profissional", (req, resp) => {
     });
 });
 
-app.post("/profissional-busca", (req, resp) => {
+app.post("/profissional-busca", verifica_token, (req, resp) => {
 
     const {profissao,categoria,cidade,estado} = req.body;
     console.log("POST -  ProfissionalBusca: " + profissao,categoria,cidade,estado);
@@ -178,7 +220,7 @@ app.post("/user", (req, resp) =>{
     });
 });
 
-app.get("/user/:Iduser", (req, resp) => {
+app.get("/user/:Iduser", verifica_token, (req, resp) => {
     var Iduser = req.params.Iduser;
     console.log("GET - Iduser: " + Iduser);
 
@@ -195,7 +237,7 @@ app.get("/user/:Iduser", (req, resp) => {
 
 });
 
-app.put("/user/:Iduser", (req, resp) => {
+app.put("/user/:Iduser", verifica_token, (req, resp) => {
     var Iduser = req.params.Iduser;
     const {email, senha, nome} = req.body;
     console.log("PUT - Iduser: " + Iduser);
@@ -212,7 +254,7 @@ app.put("/user/:Iduser", (req, resp) => {
 });
 
 
-app.delete("/user/:Iduser", (req, resp) => {
+app.delete("/user/:Iduser", verifica_token, (req, resp) => {
     var Iduser = req.params.Iduser;
     console.log("DELETE - Iduser: " + Iduser);
 
@@ -227,7 +269,7 @@ app.delete("/user/:Iduser", (req, resp) => {
     });
 });
 
-app.post("/classificacao", (req,resp) => {
+app.post("/classificacao", verifica_token, (req,resp) => {
     const {email, comentario, profissional, classificacao} = req.body;
     console.log(email, comentario, profissional, classificacao);
 
@@ -242,7 +284,7 @@ app.post("/classificacao", (req,resp) => {
     });
 });
 
-app.get("/feedback/:IdProfissional", (req, resp) => { 
+app.get("/feedback/:IdProfissional", verifica_token, (req, resp) => { 
     console.log("GET - num: " + req.params.num);
 
     connection.query("SELECT email, comentario, profissional, classificacao FROM feedback WHERE profissional = ?", [req.params.IdProfissional], (err, result) => {
@@ -257,7 +299,7 @@ app.get("/feedback/:IdProfissional", (req, resp) => {
     });
 
 });
-app.put("/classificacao/:Id", (req, resp) => {
+app.put("/classificacao/:Id", verifica_token, (req, resp) => {
     var Id = req.params.Id;
     var idfeed = req.body;
     console.log("PUT - Id: " + Id);
@@ -273,7 +315,7 @@ app.put("/classificacao/:Id", (req, resp) => {
     });
 
 });
-app.delete("/classificacao/:Id", (req, resp) => {
+app.delete("/classificacao/:Id", verifica_token, (req, resp) => {
     var Id = req.params.Id;
     console.log("DELETE - Id: " + Id);
 
@@ -288,7 +330,7 @@ app.delete("/classificacao/:Id", (req, resp) => {
     });
 });
 
-app.get("/classificacao/:IdProfissional", (req, resp) => { 
+app.get("/classificacao/:IdProfissional", verifica_token, (req, resp) => { 
     console.log("GET - num: " + req.params.num);
 
     connection.query("SELECT avg(classificacao) FROM feedback WHERE profissional = ?", [req.params.IdProfissional], (err, result) => {

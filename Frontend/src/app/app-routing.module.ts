@@ -6,14 +6,19 @@ import { CadastrarClienteComponent } from './cadastrar-cliente/cadastrar-cliente
 import { LoginComponent } from './login/login.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { CadastrarProfissionalComponent } from './cadastrar-profissional/cadastrar-profissional.component';
+import { LoginGuard } from './login/login.guard';
 
 const routes: Routes = [
-  { path: 'procurar', component: ProcurarComponent},
   { path: '', component: HomeComponent},
-  { path: 'cadastrar/cliente', component: CadastrarClienteComponent},
+  { path: 'auth', component: LoginComponent },
+  { path: 'procurar', component: ProcurarComponent, canActivate: [LoginGuard]}, 
+  { path: 'procurar/perfil/:id', component: PerfilComponent, canActivate: [LoginGuard] },
+      
   { path: 'login', component: LoginComponent},
-  { path: 'perfil/:id', component: PerfilComponent},
+  { path: 'cadastrar/cliente', component: CadastrarClienteComponent},
   { path: 'cadastrar/profissional', component: CadastrarProfissionalComponent}
+  
+ 
 ];
 
 @NgModule({

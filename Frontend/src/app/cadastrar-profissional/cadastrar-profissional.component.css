@@ -135,18 +135,22 @@
     width: 50%;
 }
 
+.telefone{
+    margin-top: 5px;
+}
+
 .area{
     align-items: center;
     width: 50%;
     margin-left: auto;
-    margin-top: 6%;
+    margin-top: 1%;
     margin-right: auto;
 }
 
 .body{
     height: 100%;
     margin-top: 8%;
-    margin-bottom: 22%;
+    margin-bottom: 15%;
     font-family: Verdana, Geneva, Tahoma, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: medium;
 

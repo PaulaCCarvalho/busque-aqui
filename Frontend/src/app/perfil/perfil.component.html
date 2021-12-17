@@ -1,24 +1,32 @@
+<app-hearder-logado></app-hearder-logado>
 <div class="conteiner">
     <div *ngFor="let profissional of dataSource">
         <div id="title">{{profissional.nome}}</div>
-        <div id="classificacao"> <i id="icon" class="material-icons v-middle" >star</i> {{profissional.classificacao}}</div>
-        <h5 class="bloco1"><b>Profissão: </b>{{profissional.profissao}} &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <b>Categoria: </b>{{profissional.categoria}} </h5>
+        <div id="classificacao"> <i id="icon" class="material-icons v-middle">star</i> {{profissional.classificacao}}
+        </div>
+        <h5 class="bloco1"><b>Profissão: </b>{{profissional.profissao}} &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <b>Categoria:
+            </b>{{profissional.categoria}} </h5>
         <h5 class="bloco1"><b>Cidade: </b>{{profissional.cidade}}</h5>
-        <h5 class="bloco1"><b>Endereço: </b>{{profissional.endereco}} <b> &nbsp; N°:</b> {{profissional.num_endereco}}</h5>
+        <h5 class="bloco1"><b>Endereço: </b>{{profissional.endereco}} <b> &nbsp; N°:</b> {{profissional.num_endereco}}
+        </h5>
         <h5 class="bloco1"><b>Bairro: </b>{{profissional.bairro}}</h5>
         <h5 class="bloco1"><b>Cep: </b>{{profissional.cep}}</h5>
         <h5 class="bloco1"><b>Email: </b>{{profissional.email}}</h5>
         <h5 class="bloco1"><b>Telefone: </b>{{profissional.telefone}}</h5>
         <h5 class="bloco1 descricao"><b>Descrição: </b>{{profissional.descricao}}</h5>
 
-    </div> 
+    </div>
+    <div class="d-flex justify-content-center">
+    <a id="button " mat-raised-button color="warn" (click)="entrarEmContato()">Entrar em Contato</a>
+    </div>
 
     <div class="feed">
         <span id="Feedback">Feedback</span>
         <div *ngFor="let feed of dataSourceFeed">
             <hr>
             <div class="card-body">
-                <h3 id="bloco2"><b>{{feed.email}}: </b> &nbsp; &nbsp; <i id="star" class="material-icons v-middle" >star</i> {{feed.classificacao}}</h3>
+                <h3 id="bloco2"><b>{{feed.email}}: </b> &nbsp; &nbsp; <i id="star"
+                        class="material-icons v-middle">star</i> {{feed.classificacao}}</h3>
                 <h3 id="bloco2"><b>Comentário:</b> {{feed.comentario}}</h3>
             </div>
         </div>
@@ -27,3 +35,4 @@
 
 </div>
 
+<router-outlet></router-outlet>

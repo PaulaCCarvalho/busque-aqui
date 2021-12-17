@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TecwebService } from '../tecweb.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class CadastrarProfissionalComponent implements OnInit {
 
   public formulario!: FormGroup;
 
-  constructor(private service: TecwebService, private formBuilder: FormBuilder) { }
+  constructor(private service: TecwebService, private formBuilder: FormBuilder, private router : Router) { }
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
@@ -41,6 +42,7 @@ export class CadastrarProfissionalComponent implements OnInit {
         alert("Profissional cadastrado com sucesso!");
       });
 
+      this.router.navigate(['/login']);
     }else{
       alert("As senhas não são iguais!");
     }

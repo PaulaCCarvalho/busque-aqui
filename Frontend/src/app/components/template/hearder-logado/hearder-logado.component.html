@@ -10,7 +10,8 @@
         <div class="menu">
             <a mat-button [routerLink]="'/procurar'">Profissionais</a>
             <a mat-button [routerLink]="'/cadastrar/cliente'">Cadastrar</a>
-            <a mat-button [routerLink]="'/login'">Login</a>
+            <a mat-button (click)="Deslogar()">Sair</a>
+            <button mat-icon-button class="px-auto" title="Excluir conta permanentemente" (click)="DeletarUsuario()"><mat-icon class="m-0 p-0">delete_forever</mat-icon></button>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>

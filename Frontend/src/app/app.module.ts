@@ -15,7 +15,6 @@ import { HomeComponent } from './home/home.component';
 
 import { CadastrarClienteComponent } from './cadastrar-cliente/cadastrar-cliente.component';
 import { LoginComponent } from './login/login.component';
-import { SlideComponent } from './components/template/slide/slide.component';
 
 import { HttpClientModule } from '@angular/common/http'
 
@@ -26,6 +25,12 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { CadastrarProfissionalComponent } from './cadastrar-profissional/cadastrar-profissional.component';
 
 import { MatCardModule } from '@angular/material/card';
+import { LoginGuard } from './login/login.guard';
+import { Globals } from './globals/globals';
+import { HearderLogadoComponent } from './components/template/hearder-logado/hearder-logado.component';
+
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 
@@ -37,10 +42,10 @@ import { MatCardModule } from '@angular/material/card';
     HomeComponent,
     CadastrarClienteComponent,
     LoginComponent,
-    SlideComponent,
     PerfilComponent,
     ProcurarComponent,
-    CadastrarProfissionalComponent
+    CadastrarProfissionalComponent,
+    HearderLogadoComponent,
     
 
   ],
@@ -56,12 +61,13 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatCardModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
+    MatIconModule,
   ],
   exports: [
     
   ],
-  providers: [],
+  providers: [LoginGuard, Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

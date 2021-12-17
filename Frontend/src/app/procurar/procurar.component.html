@@ -1,4 +1,6 @@
-<body>
+
+<body >
+    <app-hearder-logado></app-hearder-logado>
 <div class="pesquisa">
     <mat-card >
         <form>
@@ -19,21 +21,23 @@
     </mat-card>
 </div>
 
-<div class="conteiner"> 
-    <div *ngFor="let profissional of dataSource">
+<div class="conteiner "> 
+    <div *ngFor="let profissional of dataSource" class="d-grid">
         <div class="card" style="width: 15rem;">
             <div class="card-body">
                 <h5 id="title">{{profissional.nome}}</h5>
                 <p id="classificacao"> <i id="icon" class="material-icons v-middle" >star</i> {{profissional.classificacao}}</p>
                 <p class="bloco"> <b>Profissão: </b>{{profissional.profissao}}</p>
                 <p class="bloco"><b>Localização: </b>{{profissional.cidade}} &nbsp; - &nbsp; {{profissional.estado}}</p>
-                <a id="button" mat-raised-button color="warn"  [routerLink]="['/perfil', profissional.iduser]">Analizar Perfil</a>
+            </div>
+            <div class="card_footer row justify-content-md-center">
+                <a class="col-10"id="button" mat-raised-button color="warn"  [routerLink]="['/procurar/perfil', profissional.iduser]" (click)="destruir()">Analizar Perfil</a>
             </div>
         </div>
     </div>
 </div>
 
-<router-outlet></router-outlet>
+
 
 <!--<img id="img" src="assets/img/woman.png" class="card-img-top" alt="...">-->
 
@@ -51,3 +55,5 @@
     </div>
 </table> -->
 </body>
+
+<router-outlet></router-outlet>

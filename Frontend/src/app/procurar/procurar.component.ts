@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
 import { TecwebService } from '../tecweb.service';
 
-export class Profissional{
+export class Profissional {
   iduser: number | undefined;
   nome: string | undefined;
   profissao: string | undefined;
@@ -11,7 +12,7 @@ export class Profissional{
   classificacao: number = 0;
 }
 
-
+  
 @Component({
   selector: 'app-procurar',
   templateUrl: './procurar.component.html',
@@ -21,39 +22,47 @@ export class ProcurarComponent implements OnInit {
   message!: any;
   dataSource: Profissional[] = [];
   data: Profissional = new Profissional;
+  destroi: boolean = false;
 
   profissional: Profissional = {
     iduser: NaN,
-    nome: '', 
+    nome: '',
     profissao: '',
     cidade: '',
     estado: '',
     categoria: '',
     classificacao: NaN
-      
+
   }
-  constructor(private service: TecwebService) { }
+  constructor(private service: TecwebService, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.currentMessage.subscribe(data =>{
+    this.destroi = false
+    this.service.currentMessage.subscribe(data => {
       this.message = data;
     })
+
     this.service.getProfissional().subscribe(profissionais => this.dataSource = profissionais);
+
   }
 
-  newMessage(profissional: Profissional){
-    if(profissional.iduser){
+  newMessage(profissional: Profissional) {
+    if (profissional.iduser) {
       this.service.changeMessage(profissional.iduser);
-    } 
-  }
-
-  passarId(profissional: Profissional){
-    if(profissional.iduser){
-      this.service.Idpass(profissional.iduser);
     }
   }
+   passarId(profissional: Profissional) {
+    if (profissional.iduser) {
+      this.service.Idpass(profissional.iduser);
+    }
+  } 
 
-  buscar(){
+  destruir(){
+    this.destroi = true;
+  }
+
+
+  buscar() {
     this.service.getBuscar(this.profissional).subscribe((profissionais) => {
       this.dataSource = profissionais;
     })

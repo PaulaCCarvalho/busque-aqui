@@ -39,6 +39,8 @@
 .card{
     margin: 5%;
     border-radius: 15px;
+    height: 17rem !important;
+    vertical-align: middle;
 }
 
 #img{

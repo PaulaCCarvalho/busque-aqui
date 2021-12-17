@@ -1,21 +1,26 @@
-<div class="conteiner">
+<app-header></app-header>
+<div class="container">
     <div id="title">LOGIN</div>
     
-    <form>
+    <form class="row justify-content-md-center">
         <div class="form-gruop">
-            <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" placeholder="Nome">
+            <label for="login">Login</label>
+            <input type="text" class="form-control" id="login" placeholder="Login" [(ngModel)] = "login" [ngModelOptions]="{standalone: true}">
         </div>
 
-        <div class="form-gruop">
-              <label for="email">E-mail</label>
-              <input type="text" class="form-control" id="email" placeholder="E-mail">
+        <div class="form-gruop mb-3">
+              <label for="senha mb-3">Senha</label>
+              <input type="password" class="form-control" id="senha" placeholder="••••••••" [(ngModel)] = "senha" [ngModelOptions]="{standalone: true}">
         </div>
     </form>
-          <a><u> Esqueci minha senha</u></a>
+          <a class="my-3"><u> Esqueci minha senha</u></a>
 
-        <div class="botao">
-            <button type="submit" class="btn btn-primary">Entrar</button>
+        <div class="error active" *ngIf="loginInvalido">
+            Login ou senha inválidos!
+        </div>
+
+        <div class="botao row justify-content-md-center">
+            <button type="submit" class="btn btn-primary col-5" (click)="logar()">Entrar</button>
         </div>
     
 

@@ -52,4 +52,15 @@ export class PerfilComponent implements OnInit {
     this.service.changeMessage(message);
   }
 
+  entrarEmContato(){
+    console.log(this.dataSource[0].telefone)
+    let telefone = this.dataSource[0].telefone;
+    telefone?.replace('(', '');
+    telefone?.replace(')', '');
+    telefone?.replace('-', '');
+    telefone?.replace(' ', '');
+    let link = `https://api.whatsapp.com/send?phone=55${telefone}`;
+    window.open(link, '_blank');
+  }
+
 }

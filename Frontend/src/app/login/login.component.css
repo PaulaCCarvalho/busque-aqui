@@ -1,4 +1,4 @@
-.conteiner{
+.container{
     display: grid;
     grid-template-rows: 10vh 10vh 10vh  2.5vhs;
     width: 35%;
