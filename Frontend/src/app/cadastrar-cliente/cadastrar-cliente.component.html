@@ -3,7 +3,7 @@
 <div class="conteiner">
     <div id="title">CADASTRO</div>
     
-    <form >
+    <form  [formGroup]="formulario" (ngSubmit)="onSubmit()">
         <div id="radio">
             <div class="form-check">
                 <input class="form-check-input v-middle " type="radio" name="flexRadioDefault" id="flexRadioDefault1 " checked>
@@ -23,19 +23,19 @@
 
         <div class="form-gruop">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" placeholder="Nome">
+        <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome">
         </div>
         <div class="form-gruop">
             <label for="email">E-mail</label>
-            <input type="text" class="form-control" id="email" placeholder="E-mail">
+            <input type="text" class="form-control" id="email" placeholder="E-mail" formControlName="email">
         </div>
         <div class="form-gruop left">
             <label for="senha">Senha</label>
-            <input type="text" class="form-control" id="senha" placeholder="Senha">
+            <input type="password" class="form-control" id="senha" placeholder="Senha" formControlName="senha">
         </div>
         <div class="form-gruop right">
             <label for="confirmar_senha">Confirmar Senha</label>
-            <input type="text" class="form-control" id="confirmar_senha" placeholder="Confirmar Senha">
+            <input type="password" class="form-control" id="confirmar_senha" placeholder="Confirmar Senha" formControlName="confirm_senha">
         </div>
         <!-- Adicionar Imagem  <div class="form-gruop" id="adicionar-imagens" >
             <label for="adicionar imagem" style="margin-top: 2%;">Adicione Imagens</label>
@@ -45,11 +45,13 @@
             <input type="image" class="form-control" id="adicionar imagem" src="img_submit.gif" alt="Insira a sua Imagem">
             <input type="file" name="arquivos" class="form-control"  accept="image/png, image/jpeg"  multiple/> 
         </div>-->
+
+        
+        <div class="botao">
+            <button type="submit" class="btn btn-primary">Concluir Cadastro</button>
+        </div>
     </form>
 
-    <div class="botao">
-        <button type="submit" class="btn btn-primary">Concluir Cadastro</button>
-    </div>
 
 </div>
 

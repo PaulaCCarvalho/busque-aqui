@@ -2,7 +2,7 @@
     <div class="conteiner">
         <div id="title">CADASTRO</div>
         
-        <form >
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
             <div id="radio">
                 <div class="form-check">
                     <a id="link" [routerLink]="'/cadastrar/cliente'">
@@ -22,65 +22,92 @@
     
             <div class="form-gruop">
             <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" placeholder="Nome">
+            <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome" required>
             </div>
             <div class="form-gruop">
                 <label for="email">E-mail</label>
-                <input type="text" class="form-control" id="email" placeholder="E-mail">
+                <input type="text" class="form-control" id="email" placeholder="E-mail" formControlName="email" required>
             </div>
             <div class="form-gruop left">
                 <label for="senha">Senha</label>
-                <input type="text" class="form-control" id="senha" placeholder="Senha">
+                <input type="password" class="form-control" id="senha" placeholder="Senha" formControlName="senha" required>
             </div>
             <div class="form-gruop right">
                 <label for="confirmar_senha">Confirmar Senha</label>
-                <input type="text" class="form-control" id="confirmar_senha" placeholder="Confirmar Senha">
+                <input type="password" class="form-control" id="confirmar_senha" placeholder="Confirmar Senha" formControlName="confirm_senha" required>
             </div>
             <div class="form-gruop left">
                 <label for="profissao">Profissão</label>
-                <input type="text" class="form-control" id="profissao" placeholder="Profissão">
+                <input type="text" class="form-control" id="profissao" placeholder="Profissão" formControlName="profissao" required>
             </div>
             <div class="form-gruop right">
                 <label for="Categoria">Categoria</label>
-                <select class="form-control"  id="categorias">
-                    <option>Construção Cívil</option>
-                    <option>Engenharia</option>
-                    <option>Arquitetura</option>
-                    <option>Computação</option>
+                <select class="form-control"  id="categorias" formControlName="categoria" required>
+                    <option value="Construção Civil">Construção Cívil</option>
+                    <option value="Engenharia">Engenharia</option>
+                    <option value="Arquitetura">Arquitetura</option>
+                    <option value="Computação">Computação</option>
                 </select>
             </div>
             <div class="form-gruop" id="endereco-div">
                 <label for="Endereco">Endereço</label>
-                <input type="text" class="form-control" id="endereco" placeholder="Endereço">
+                <input type="text" class="form-control" id="endereco" placeholder="Endereço" formControlName="endereco" required>
             </div>
             <div class="form-gruop left">
                 <label for="bairro">Bairro</label>
-                <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+                <input type="text" class="form-control" id="bairro" placeholder="Bairro" formControlName="bairro" required>
             </div>
             <div class="form-gruop right">
                 <label for="numero">Número</label>
-                <input type="text" class="form-control" id="numero" placeholder="Número">
+                <input type="text" class="form-control" id="numero" placeholder="Número" formControlName="numero" required>
             </div>
             <div class="form-gruop" id="cidade-div">
                 <label for="cidade">Cidade</label>
-                <input type="text" class="form-control" id="cidade" placeholder="Cidade">
+                <input type="text" class="form-control" id="cidade" placeholder="Cidade" formControlName="cidade" required>
             </div>
             <div class="form-gruop left">
                 <label for="cep">CEP</label>
-                <input type="text" class="form-control" id="cep" placeholder="xxxxx-xxx">
+                <input type="text" class="form-control" id="cep" placeholder="xxxxx-xxx" formControlName="cep" required>
             </div>
             <div class="form-gruop right">
                 <label for="estado">Estado</label>
-                <select class="form-control" id="estado">
-                    <option>Espirito Santo - ES</option>
-                    <option>Minas Gerais - MG</option>
-                    <option>São Paulo - SP</option>
-                    <option>Rio de Janeiro - RJ</option>
+                <select class="form-control" id="estado" formControlName="estado" required>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
                 </select>
+            </div>
+            <div class="form-gruop" id="telefone-div">
+                <label for="telefone">Telefone</label>
+                <input type="text" class="form-control" id="telefone" placeholder="(xx) x xxxx-xxxx" formControlName="telefone" required>
             </div>
             <div class="form-group area">
                 <label for="descriacao">Descrição</label>
-                <textarea class="form-control" id="descriacao" rows="5" placeholder="Descrição do que voçê faz"></textarea>
+                <textarea class="form-control" id="descriacao" rows="5" placeholder="Descrição do que você faz" formControlName="descricao" required></textarea>
             </div>
             
     
@@ -97,11 +124,13 @@
                 <input type="image" class="form-control" id="adicionar imagem" src="img_submit.gif" alt="Insira a sua Imagem">
                 <input type="file" name="arquivos" class="form-control"  accept="image/png, image/jpeg"  multiple/> 
             </div>-->
-        </form>
-    
+
+                
         <div class="botao">
             <button type="submit" class="btn btn-primary">Concluir Cadastro</button>
         </div>
+    </form>
+
         
     </div>
 </body>

@@ -19,7 +19,7 @@ import { SlideComponent } from './components/template/slide/slide.component';
 
 import { HttpClientModule } from '@angular/common/http'
 
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { PerfilComponent } from './perfil/perfil.component';
@@ -54,7 +54,9 @@ import { MatCardModule } from '@angular/material/card';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule, 
   ],
   exports: [
     

@@ -54,7 +54,9 @@ export class ProcurarComponent implements OnInit {
   }
 
   buscar(){
-    //this.service.getBuscar(this.profissional).subscribe((profissionais: Profissional) => this.data = profissionais)
+    this.service.getBuscar(this.profissional).subscribe((profissionais) => {
+      this.dataSource = profissionais;
+    })
   }
 
 }

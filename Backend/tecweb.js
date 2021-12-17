@@ -5,8 +5,8 @@ var app = express();
 var mysql = require("mysql");
 var connection = mysql.createConnection({
     host: "localhost",
-    user: "Paula",
-    password: "password",
+    user: "DiegoDias",
+    password: "Ddp260700",
     database: "tecweb"
 });
 
@@ -145,11 +145,10 @@ app.get("/profissional", (req, resp) => {
     });
 });
 
-app.get("/profissional-busca", (req, resp) => {
+app.post("/profissional-busca", (req, resp) => {
 
-    console.log("Entrei aqui")
     const {profissao,categoria,cidade,estado} = req.body;
-    console.log("GET -  ProfissionalBusca: " + profissao,categoria,cidade,estado);
+    console.log("POST -  ProfissionalBusca: " + profissao,categoria,cidade,estado);
 
      connection.query("SELECT iduser,nome, profissao, cidade, estado, categoria, (SELECT avg(classificacao) from feedback where iduser = profissional ) AS 'classificacao' FROM cadastro JOIN perfil ON cadastro.perfil = idperfil WHERE perfil IS NOT NULL AND profissao=? AND categoria=? AND cidade=? AND estado=? ",[profissao,categoria,cidade,estado], (err, result) => {
 

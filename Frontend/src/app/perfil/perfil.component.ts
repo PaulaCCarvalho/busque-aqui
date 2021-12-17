@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { TecwebService } from '../tecweb.service';
+import { switchMap } from 'rxjs/operators';
 
 export class Perfil{
   iduser: number | undefined;
@@ -36,16 +38,15 @@ export class PerfilComponent implements OnInit {
   dataSourceFeed: Feedback[] = [];
   Id!: number;
 
-  constructor(private service: TecwebService) { }
+  constructor(private service: TecwebService, private router: Router, private route: ActivatedRoute) { }
 
   
   ngOnInit(): void {
-    this.Id = TecwebService.Iduser;
+    this.Id = +this.route.snapshot.paramMap.get('id')!;
+
     this.service.getPerfil(this.Id).subscribe(perfil => this.dataSource = perfil);
     this.service.getFeed(this.Id).subscribe((feedback) => this.dataSourceFeed = feedback);
   }
-
-  
 
   newMessage(message: any){
     this.service.changeMessage(message);

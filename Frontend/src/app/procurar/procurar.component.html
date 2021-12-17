@@ -19,11 +19,6 @@
     </mat-card>
 </div>
 
-{{profissional.profissao}}
-{{profissional.categoria}}
-{{profissional.cidade}}
-{{profissional.estado}}
-
 <div class="conteiner"> 
     <div *ngFor="let profissional of dataSource">
         <div class="card" style="width: 15rem;">
@@ -32,7 +27,7 @@
                 <p id="classificacao"> <i id="icon" class="material-icons v-middle" >star</i> {{profissional.classificacao}}</p>
                 <p class="bloco"> <b>Profissão: </b>{{profissional.profissao}}</p>
                 <p class="bloco"><b>Localização: </b>{{profissional.cidade}} &nbsp; - &nbsp; {{profissional.estado}}</p>
-                <a id="button" mat-raised-button color="warn" (click)="passarId(profissional)" [routerLink]="'/perfil'">Analizar Perfil</a>
+                <a id="button" mat-raised-button color="warn"  [routerLink]="['/perfil', profissional.iduser]">Analizar Perfil</a>
             </div>
         </div>
     </div>
