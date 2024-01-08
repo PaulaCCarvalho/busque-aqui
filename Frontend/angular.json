@@ -109,5 +109,8 @@
       }
     }
   },
-  "defaultProject": "Frontend-BusqueAqui"
+  "defaultProject": "Frontend-BusqueAqui",
+  "cli": {
+    "analytics": false
+  }
 }

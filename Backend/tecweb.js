@@ -3,12 +3,14 @@ var cors = require('cors');
 var app = express();
 var jwt = require('jsonwebtoken');
 
-var mysql = require("mysql");
+var mysql = require("mysql2");
+const dotenv = require('dotenv');
+dotenv.config();
 var connection = mysql.createConnection({
-    host: "localhost",
-    user: "Paula",
-    password: "password",
-    database: "tecweb"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASS,
 });
 
 app.use(cors());
